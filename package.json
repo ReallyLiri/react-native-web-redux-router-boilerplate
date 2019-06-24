@@ -1,0 +1,10 @@
+{
+  "name": "rnwexample",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": []
+  }
+}
