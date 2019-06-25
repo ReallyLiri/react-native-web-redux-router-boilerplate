@@ -1,53 +1,10 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Router, Switch, Route, Redirect } from './routing';
-
-class HomeComponent extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Home Page</Text>
-        <TouchableOpacity
-          onPress={() => this.props.history.push('/one')}>
-          <Text style={styles.title}>#1</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => this.props.history.push('/two')}>
-          <Text style={styles.title}>#2</Text>
-        </TouchableOpacity>
-      </View>
-    )
-  }
-}
-
-class NumberOneComponent extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity
-          onPress={() => this.props.history.push('/')}>
-          <Text style={styles.title}>Back</Text>
-        </TouchableOpacity>
-        <Text style={styles.title}>Page #1</Text>
-      </View>
-    )
-  }
-}
-
-class NumberTwoComponent extends Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <TouchableOpacity
-          onPress={() => this.props.history.push('/')}>
-          <Text style={styles.title}>Back</Text>
-        </TouchableOpacity>
-        <Text style={styles.title}>Page #2</Text>
-      </View>
-    )
-  }
-}
+import HomeComponent from "./containers/HomeComponent";
+import NumberOneComponent from "./containers/OneComponent";
+import NumberTwoComponent from "./containers/TwoComponent";
 
 export default class App extends Component {
 
@@ -80,7 +37,7 @@ export default class App extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
