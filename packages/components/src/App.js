@@ -1,29 +1,64 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
+import React, { Component } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import { Router, Switch, Route, Redirect } from './routing';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
-type Props = {};
-export default class App extends Component<Props> {
+class HomeComponent extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <Text style={styles.title}>Home Page</Text>
+      </View>
+    )
+  }
+}
+
+class NumberOneComponent extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Page #1</Text>
+      </View>
+    )
+  }
+}
+
+class NumberTwoComponent extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>Page #2</Text>
+      </View>
+    )
+  }
+}
+
+export default class App extends Component {
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Router>
+          <Switch>
+            <Route
+              exact path="/"
+              render={props => <HomeComponent {...props}/>}
+            />
+            <Route
+              path="/one"
+              render={props => <NumberOneComponent {...props}/>}
+            />
+            <Route
+              path="/two"
+              render={props => <NumberTwoComponent {...props}/>}
+            />
+            <Redirect to='/'/>
+          </Switch>
+        </Router>
       </View>
     );
   }
@@ -31,19 +66,17 @@ export default class App extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#D3C0F9',
+    padding: 50,
+    height: '100%'
   },
-  welcome: {
+  title: {
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    color: '#AB6393',
+    fontWeight: 'bold'
+  }
 });

@@ -1,5 +1,9 @@
 {
   "name": "components",
   "version": "0.0.1",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "react-router-dom": "^5.0.1",
+    "react-router-native": "^5.0.1"
+  }
 }
