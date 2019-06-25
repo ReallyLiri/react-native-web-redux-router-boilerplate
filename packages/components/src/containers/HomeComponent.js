@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
+
 import { styles } from '../App'
+import routingConnect from '../routing-connect'
 
 class HomeComponent extends Component {
   render() {
+    const {pushNavigation} = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Home Page</Text>
         <TouchableOpacity
-          onPress={() => this.props.history.push('/one')}>
+          onPress={() => pushNavigation('/one')}>
           <Text style={styles.title}>#1</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => this.props.history.push('/two')}>
+          onPress={() => pushNavigation('/two')}>
           <Text style={styles.title}>#2</Text>
         </TouchableOpacity>
       </View>
@@ -20,4 +23,12 @@ class HomeComponent extends Component {
   }
 }
 
-export default HomeComponent;
+function mapStateToProps(state) {
+  return {};
+}
+
+function mapDispatchToProps() {
+  return {};
+}
+
+export default routingConnect(mapStateToProps, mapDispatchToProps)(HomeComponent);
